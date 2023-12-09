@@ -178,7 +178,7 @@ child: Center(
 ),
 ),
 
-SizedBox(height: 5,),
+SizedBox(height: 8,),
 
 Container(
    padding: EdgeInsets.only(left: 20,right: 20,),
@@ -190,7 +190,7 @@ Container(
       new Text("DESCRIPTION",style: TextStyle(
         color: Colors.black,fontWeight:FontWeight.w800
       ),),
-      Text("Common Projects leather sneakers have gained cult status thanks.to their minimalist design and superior construction. This whiteversion is perfect for creating crisp city-smart looks"),
+      Text("Common Projects leather sneakers have gained cult status thanks.to their minimalist design and superior construction. This whiteversion is perfect for creating crisp city-smart looks", textAlign:TextAlign.center,),
 
 
     ],
@@ -240,4 +240,3 @@ child: Center(child: Text("DETAILS & CARE",style: TextStyle(
 }
 
   
-// hgjhjhjhkghghj

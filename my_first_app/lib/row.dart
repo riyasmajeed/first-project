@@ -1,6 +1,9 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:social_login_buttons/social_login_buttons.dart';
+
+
  void main() {
    runApp(const MyApp());
  }

@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+
+
  void main() {
    runApp(const MyApp());
  }
@@ -169,7 +171,9 @@ import 'package:flutter/material.dart';
           //  padding: EdgeInsets.only(right: 3),
                child: Column(
                 children: [
-                  Image.asset("assets/sho.png"),
+                 
+                  Image.asset("assets/sho.png",
+                  ),
                   SizedBox(height: 1,),
                   Text("COMMON PROJECTS",style: TextStyle(
                     color: Colors.black,fontWeight: FontWeight.w800,letterSpacing: 1

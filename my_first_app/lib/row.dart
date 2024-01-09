@@ -1,15 +1,20 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:social_login_buttons/social_login_buttons.dart';
+
 
 
  void main() {
-   runApp(const MyApp());
+   runApp( PageUp());
  }
- class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+ class PageUp extends StatefulWidget {
+  const PageUp({super.key});
 
+  @override
+  State<PageUp> createState() => _PageUpState();
+}
+
+class _PageUpState extends State<PageUp> {
   @override
   Widget build(BuildContext context) {
    return  MaterialApp(

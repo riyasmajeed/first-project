@@ -29,10 +29,10 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
-    sdk: flutter
-  cupertino_icons: ^1.0.2
-  social_login_buttons: ^1.0.7
-  sqlite3_flutter_libs: ^0.5.18
+   sdk: flutter
+  sqflite: ^2.3.0
+  path_provider: ^2.1.1
+
 
 dev_dependencies:
   flutter_test:

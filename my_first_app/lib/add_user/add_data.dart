@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_first_app/Service/userService.dart';
 import 'package:my_first_app/add_user/user.dart';
-import 'package:my_first_app/home.dart';
+import 'package:my_first_app/operations/on_press_opreration.dart';
+import 'package:my_first_app/screens/home.dart';
 
 class Adduser extends StatefulWidget {
   const Adduser({Key? key}):super(key: key);
@@ -74,7 +75,7 @@ class _AdduserState extends State<Adduser> {
                     border: const OutlineInputBorder(),
                     hintText: 'Enter  BRAND Name',
                     labelText: ' BRAND Name',
-                    errorText: _validateBRAND ? 'value can\'t be empty':null,
+                    errorText: _validateBRAND ? 'Brand name can\'t be empty':null,
                    
                        
                   ),
@@ -89,7 +90,7 @@ class _AdduserState extends State<Adduser> {
                     border: const OutlineInputBorder(),
                     hintText: 'Enter PRICE',
                     labelText: 'PRICE',
-                     errorText: _validatePRICE ? 'value can\'t be empty':null,
+                     errorText: _validatePRICE ? 'PRICE can\'t be empty':null,
                    
                   )),
               const SizedBox(
@@ -103,7 +104,7 @@ class _AdduserState extends State<Adduser> {
                     border: const OutlineInputBorder(),
                     hintText: 'Enter Description',
                     labelText: 'Description',
-                     errorText: _validateDescription ? 'value can\'t be empty':null,
+                     errorText: _validateDescription ? 'Description can\'t be empty':null,
                    
                   ),
                   ),
@@ -142,7 +143,7 @@ class _AdduserState extends State<Adduser> {
 Navigator.pop(context,result);
                          
                       _showSuccessSnackBar(
-                                  'User Detail Updated Success');    
+                                  ' Detail Updated Success');    
                             }
 
                           
@@ -167,7 +168,7 @@ Navigator.pop(context,result);
               ),
                TextButton(
   onPressed: () {
-   Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext ctx) => Home()));
+   RedirectToHomepage(context);
   },
    child: Container(
         width: 180,

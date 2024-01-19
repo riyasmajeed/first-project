@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/Text_widget/text.dart';
 import 'package:my_first_app/add_user/add_data.dart';
-import 'package:my_first_app/home.dart';
-import 'package:my_first_app/row.dart';
+import 'package:my_first_app/screens/home.dart';
+import 'package:my_first_app/screens/row.dart';
+import 'package:my_first_app/operations/on_press_opreration.dart';
 
 class First extends StatefulWidget {
   const First({super.key});
@@ -78,17 +80,18 @@ class _MyAppState extends State<First> {
     
                       ),
     
-                      Text("COMMON PROJECTS",
+                      // Text("COMMON PROJECTS",
     
-                      style: TextStyle(
+                      // style: TextStyle(
     
-                        fontWeight: FontWeight.w500,
+                      //   fontWeight: FontWeight.w500,
     
-                        fontSize: 20,color: Colors.black
+                      //   fontSize: 20,color: Colors.black
     
-                      ),
+                      // ),
     
-                      ),
+                      // ),
+                      commonproject,
     
                       SizedBox(width: 50,),
     
@@ -136,8 +139,7 @@ class _MyAppState extends State<First> {
      
      TextButton(
   onPressed: () {
-   Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext ctx) => Home()));
-  },
+RedirectToHomepage(context);  },
    child: Container(
         width: 180,
         height: 52,
@@ -151,7 +153,8 @@ class _MyAppState extends State<First> {
  ),
  TextButton(
   onPressed: () {
-   Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext ctx) => Adduser()));
+    RedirectToaddPage(context);
+  //  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext ctx) => Adduser()));
   },
    child: Container(
         width: 180,
@@ -173,3 +176,7 @@ class _MyAppState extends State<First> {
     );
   }
 }
+
+// RedirectToaddPage(context){
+//    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext ctx) => Adduser()));
+// }

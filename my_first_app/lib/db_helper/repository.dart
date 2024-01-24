@@ -19,18 +19,18 @@ class Repository{
  }
 
 
-// Insert data
+// Insert data//
 insertData(table,data) async {
   var connection =await database;
   return await connection?.insert(table,data);
 }
-// Read all record
+// Read all record//
 readData(table) async{
   var connection =await database;
   return await connection?.query(table);
 }
 
-//delete data
+//delete data//
 deleteData(table) async{
   var connection =await database;
   return await connection?.delete(table);

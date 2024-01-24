@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:my_first_app/Service/userService.dart';
 import 'package:my_first_app/Text_widget/text.dart';
 import 'package:my_first_app/add_user/user.dart';
+import 'package:my_first_app/operations/on_press_opreration.dart';
 import 'package:my_first_app/screens/row.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -25,6 +27,8 @@ class _MyWidgetState extends State<Home> {
         usermodel.brand = user['brand'];
         usermodel.price = user['price'];
         usermodel.description = user['description'];
+        usermodel.imageurl = user['imageurl'];
+        
         _userList.add(usermodel);
       });
     });
@@ -38,30 +42,38 @@ class _MyWidgetState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    var newname = Text(
-      "COMMON PROJECTS",
-      style: TextStyle(
-          color: Colors.black, fontWeight: FontWeight.w800, letterSpacing: 1),
-    );
-
-    // var price = Text("\$410");
-    // var tag = Text("original achilles low sneakers",style: TextStyle(
-    //                     color: Colors.black
-    //                   ),);
-    // var pre_order = Text
-    //                   ("pre-Order",
-    //                   style:TextStyle( color: Colors.grey));
+    
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Center(child: commonproject),
-        leading: const Icon(
-          Icons.search_sharp,
-          size: 30,
-          color: Colors.black,
-        ),
-        actions: const [
+         title:  commonproject,
+         centerTitle: true,
+        leading: 
+        Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Flexible(
+                flex: 1,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25),
+                  onPressed: () {
+                   RedirectToMenupage(context);
+                  },
+                ),
+              ),
+              Flexible(
+                flex: 1,
+                child: IconButton(
+                  icon: const Icon(Icons.search, color: Colors.black, size: 25),
+                  onPressed: () {},
+                ),
+              ),
+            ],
+          ),
+        
+
+        actions:  [
           Icon(
             Icons.checkroom_sharp,
             size: 30,
@@ -74,8 +86,7 @@ class _MyWidgetState extends State<Home> {
             crossAxisCount: 2,
           ),
           scrollDirection: Axis.vertical,
-          
-         
+
           //  width: MediaQuery.of(context).size.width,
           // height: MediaQuery.of(context).size.height,
 
@@ -85,73 +96,56 @@ class _MyWidgetState extends State<Home> {
           itemCount: _userList.length,
           itemBuilder: (context, index) {
             return Container(
-              height: 320,
-             
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
               child: Padding(
-                
-                padding: const EdgeInsets.only(right: 5,left: 5),
-                  child: Card(
-                        
-                          
-                          
-                           child: Column(
+                padding: const EdgeInsets.only(right: 5, left: 5),
+                child: Card(
+                  child: Column(
+                    children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (Context) => PageUp(user: _userList[index],)));
+                      },
+                        child: SizedBox(
+                          child: Image.network(
                             
-                            children: [
-                              
-                               SizedBox(
-                                
+                            _userList[index].imageurl ?? '',
+                            //  "https://w7.pngwing.com/pngs/113/86/png-transparent-green-sneakers-skate-shoe-nike-nike-sports-shoes-blue-sport-logo.png",
+                            // height: 149,
+                          ),
+                        ),
+                      ),
 
-                                child: Image.network("https://w7.pngwing.com/pngs/113/86/png-transparent-green-sneakers-skate-shoe-nike-nike-sports-shoes-blue-sport-logo.png",
-                               height: 149, ),
-                              
-                                ),
-                              
-                              //  Image.asset("assets/sh.png"),
-                              // SizedBox(height: 1,),
-                             
-                              Container(  
-            
-                                child: Center(
-            
-                                  
-                                  child: Text(_userList[index].brand ?? '',
-                                  style: TextStyle(
-                                     color: Colors.black,fontWeight: FontWeight.w800,letterSpacing: 1
-                                    
-                                  ),
-                                  ),
-                               
-                                  
-                                ),
-            
-                                
-                                // subtitle:Text(_userList[index].price ?? '',), 
-                              ),
-            
-            
-                              // SizedBox(height:1),
-                             
-                                 Text(_userList[index].price ?? '',),
-                               Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                 children: [
-                                   Text(_userList[index].description ?? '',),
-                                   
-                                   
-                                 ],
-                               ),
-            
-                             
-                            
-                             
-                            ],
-                                   
-                           ),
-                           
-                         ),
+                      Container(
+                        child: Center(
+                          child: Text(
+                            _userList[index].brand ?? '',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: 1),
+                          ),
+                        ),
+
+                        // subtitle:Text(_userList[index].price ?? '',),
+                      ),
+                      Text(
+                        _userList[index].price ?? '',
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            _userList[index].description ?? '',
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
             );
-
           }),
     ));
   }

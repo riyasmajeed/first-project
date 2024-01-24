@@ -18,7 +18,7 @@ import 'package:my_first_app/screens/first_home.dart';
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-   return   MaterialApp(
+   return   const MaterialApp(
     
      debugShowCheckedModeBanner: false,
      home: Scaffold(
@@ -28,13 +28,6 @@ body:
  
 ),
 
- 
-    
-     
-            
-
-
-     
     );
   }
 }

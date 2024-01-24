@@ -1,17 +1,24 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:my_first_app/Service/userService.dart';
+import 'package:my_first_app/Text_widget/text.dart';
+import 'package:my_first_app/add_user/user.dart';
+import 'package:my_first_app/operations/on_press_opreration.dart';
 
 
 
- void main() {
-   runApp( PageUp());
- }
+//  void main() {
+//    runApp( PageUp());
+//  }
  class PageUp extends StatefulWidget {
-  const PageUp({super.key});
+
+  final User user;
+  const PageUp({super.key, required this.user});
 
   @override
   State<PageUp> createState() => _PageUpState();
+ 
 }
 
 class _PageUpState extends State<PageUp> {
@@ -21,71 +28,108 @@ class _PageUpState extends State<PageUp> {
     
      debugShowCheckedModeBanner: false,
      home: Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+         title:  commonproject,
+         centerTitle: true,
+        leading: 
+        Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Flexible(
+                flex: 1,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25),
+                  onPressed: () {
+                   RedirectToMenupage(context);
+                  },
+                ),
+              ),
+              Flexible(
+                flex: 1,
+                child: IconButton(
+                  icon: const Icon(Icons.search, color: Colors.black, size: 25),
+                  onPressed: () {},
+                ),
+              ),
+            ],
+          ),
+        
+
+        actions:  [
+          Icon(
+            Icons.checkroom_sharp,
+            size: 30,
+            color: Colors.black,
+          )
+        ],
+      ),
   body: Container(
      width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
     padding: EdgeInsets.only(top: 30),
-    child: Column(
+    child: Column( 
       
       children: [
-Container(
+// Container(
  
-              padding: EdgeInsets.only(bottom: 20,),
-            child: Row(
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//               padding: EdgeInsets.only(bottom: 20,),
+//             child: Row(
+//             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
              
-            children: [
-              Padding(padding: EdgeInsets.only(right: 10,left: 10)),
+//             children: [
+//               Padding(padding: EdgeInsets.only(right: 10,left: 10)),
                
-              // Padding(padding: EdgeInsets.all(10)),
-              // Padding(padding: EdgeInsets.only(bottom: 20)),
-              Container(
+//               // Padding(padding: EdgeInsets.all(10)),
+//               // Padding(padding: EdgeInsets.only(bottom: 20)),
+//               Container(
                
-                child: Icon(Icons.menu_rounded,
-                size: 30,
-                ),
+//                 child: Icon(Icons.arrow_back,
+//                 size: 30,
                 
-              ),
-              SizedBox(
-                width: 10,
-              ),
+//                 ),
+                
+//               ),
+//               SizedBox(
+//                 width: 10,
+//               ),
                
-                 Container(
+//                  Container(
      
                   
-                  child: Icon(Icons.search_sharp,
-                   size: 30,
-                  ),
+//                   child: Icon(Icons.search_sharp,
+//                    size: 30,
+//                   ),
                   
      
-                ),
-                SizedBox(
-                width: 50,
-              ),
-              Text("COMMON PROJECTS",
-              style: TextStyle(
-                fontSize: 18,color: Colors.black,fontWeight: FontWeight.w600
-              ),
-              ),
-              SizedBox(width: 50,),
-                Container(
+//                 ),
+//                 SizedBox(
+//                 width: 50,
+//               ),
+//               Text("COMMON PROJECTS",
+//               style: TextStyle(
+//                 fontSize: 18,color: Colors.black,fontWeight: FontWeight.w600
+//               ),
+//               ),
+//               SizedBox(width: 50,),
+//                 Container(
      
                  
                   
-                  child:
-                  Icon(Icons.checkroom_sharp,
-                   size: 30,
-                  ),
+//                   child:
+//                   Icon(Icons.checkroom_sharp,
+//                    size: 30,
+//                   ),
                   
      
-                ),
+//                 ),
      
-            ],
+//             ],
      
      
-          ),
+//           ),
         
-          ),
+//           ),
 
 Container(
   // width: MediaQuery.of(context).size.width*.83,
@@ -94,7 +138,8 @@ Container(
   child: Row(
     
     children: [
-      Image.asset("assets/whi.png")
+     Image.network( widget.user.imageurl??'')
+      // Image.asset("assets/whi.png")
 
     ],
   ),
@@ -107,7 +152,7 @@ child: Column(
     Padding(padding: EdgeInsets.only(bottom: 10)),
     Container(
       child: Center(
-        child: Text("COMMON PROJECTS",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w800),),
+        child: Text(widget.user.brand ?? ''),
         
       ),
     ),
@@ -119,7 +164,7 @@ child: Column(
     ),
     Container(
       child: Center(
-        child: Text("\$410"),
+        child: Text(widget.user.price ??''),
         
       ),
     ),
@@ -181,8 +226,15 @@ Container(
 //   ],
 //  ),
 child: Center(
-  child: Text("ADD TO CARD \$410",
-  style: TextStyle(color:Colors.white ),),
+  
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+       Text("PRICE :",style: TextStyle(color: Colors.white),),
+      Text(  widget.user.price??'',
+      style: TextStyle(color:Colors.white ),),
+    ],
+  ),
 ),
 ),
 
@@ -198,7 +250,7 @@ Container(
       new Text("DESCRIPTION",style: TextStyle(
         color: Colors.black,fontWeight:FontWeight.w800
       ),),
-      Text("Common Projects leather sneakers have gained cult status thanks.to their minimalist design and superior construction. This whiteversion is perfect for creating crisp city-smart looks", textAlign:TextAlign.center,),
+      Text(widget.user.description??'', textAlign:TextAlign.center,),
 
 
     ],

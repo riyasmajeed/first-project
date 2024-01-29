@@ -64,6 +64,7 @@ class _PageUpState extends State<PageUp> {
                 width: 322,
                 height: 200,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.network(widget.user.imageurl ?? '')
                     // Image.asset("assets/whi.png")
@@ -181,7 +182,7 @@ class _PageUpState extends State<PageUp> {
                     Container(
                       width: 365,
                       height: 60,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           border: Border(
                               top: BorderSide(
                                   color: Color.fromARGB(255, 137, 136, 136),

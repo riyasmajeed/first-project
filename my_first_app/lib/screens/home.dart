@@ -28,7 +28,7 @@ class _MyWidgetState extends State<Home> {
         usermodel.price = user['price'];
         usermodel.description = user['description'];
         usermodel.imageurl = user['imageurl'];
-        
+
         _userList.add(usermodel);
       });
     });
@@ -42,38 +42,35 @@ class _MyWidgetState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-         title:  commonproject,
-         centerTitle: true,
-        leading: 
-        Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Flexible(
-                flex: 1,
-                child: IconButton(
-                  icon: const Icon(Icons.arrow_back, color: Colors.black, size: 25),
-                  onPressed: () {
-                   RedirectToMenupage(context);
-                  },
-                ),
+        title: commonproject,
+        centerTitle: true,
+        leading: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Flexible(
+              flex: 1,
+              child: IconButton(
+                icon:
+                    const Icon(Icons.arrow_back, color: Colors.black, size: 25),
+                onPressed: () {
+                  RedirectToMenupage(context);
+                },
               ),
-              Flexible(
-                flex: 1,
-                child: IconButton(
-                  icon: const Icon(Icons.search, color: Colors.black, size: 25),
-                  onPressed: () {},
-                ),
+            ),
+            Flexible(
+              flex: 1,
+              child: IconButton(
+                icon: const Icon(Icons.search, color: Colors.black, size: 25),
+                onPressed: () {},
               ),
-            ],
-          ),
-        
-
-        actions:  [
+            ),
+          ],
+        ),
+        actions: [
           Icon(
             Icons.checkroom_sharp,
             size: 30,
@@ -84,6 +81,7 @@ class _MyWidgetState extends State<Home> {
       body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
+            childAspectRatio: 16/9,
           ),
           scrollDirection: Axis.vertical,
 
@@ -103,20 +101,22 @@ class _MyWidgetState extends State<Home> {
                 child: Card(
                   child: Column(
                     children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (Context) => PageUp(user: _userList[index],)));
-                      },
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (Context) => PageUp(
+                                    user: _userList[index],
+                                  )));
+                        },
                         child: SizedBox(
                           child: Image.network(
-                            
                             _userList[index].imageurl ?? '',
+                            fit: BoxFit.cover,
                             //  "https://w7.pngwing.com/pngs/113/86/png-transparent-green-sneakers-skate-shoe-nike-nike-sports-shoes-blue-sport-logo.png",
                             // height: 149,
                           ),
                         ),
                       ),
-
                       Container(
                         child: Center(
                           child: Text(

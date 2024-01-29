@@ -18,60 +18,44 @@ class _MyAppState extends State<First> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: Column(children: [
-            Container(
-              padding:
-                  EdgeInsets.only(bottom: 20, right: 15, left: 15, top: 25),
-              child: Row(
-                children: [
-                  Container(
-                    child: Icon(
-                      Icons.menu_rounded,
-                      size: 30,
-                    ),
-                  ),
-
-                  SizedBox(
-                    width: 10,
-                  ),
-
-                  Container(
-                    child: Icon(
-                      Icons.search_sharp,
-                      size: 30,
-                    ),
-                  ),
-
-                  SizedBox(
-                    width: 36,
-                  ),
-
-                  // Text("COMMON PROJECTS",
-
-                  // style: TextStyle(
-
-                  //   fontWeight: FontWeight.w500,
-
-                  //   fontSize: 20,color: Colors.black
-
-                  // ),
-
-                  // ),
-                  commonproject,
-
-                  SizedBox(
-                    width: 50,
-                  ),
-
-                  Container(
-                    child: Icon(
-                      Icons.checkroom_sharp,
-                      size: 30,
-                    ),
-                  ),
-                ],
+                appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: commonproject,
+          centerTitle: true,
+          leading: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Flexible(
+                flex: 1,
+                child: IconButton(
+                  icon: const Icon(Icons.menu_rounded,
+                      color: Colors.black, size: 25),
+                  onPressed: () {
+                    RedirectToMenupage(context);
+                  },
+                ),
               ),
-            ),
+              Flexible(
+                flex: 1,
+                child: IconButton(
+                  icon: const Icon(Icons.search, color: Colors.black, size: 25),
+                  onPressed: () {},
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            Icon(
+              Icons.checkroom_sharp,
+              size: 30,
+              color: Colors.black,
+            )
+          ],
+        ),
+          body: Column(
+            children: [
+            
+           
             TextButton(
               onPressed: () {
                 RedirectToHomepage(context);
@@ -101,7 +85,8 @@ class _MyAppState extends State<First> {
                     child: Text("ADD"),
                   )),
             ),
-          ]),
+          ]
+          ),
         ));
   }
 }

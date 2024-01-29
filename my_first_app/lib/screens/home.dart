@@ -81,7 +81,7 @@ class _MyWidgetState extends State<Home> {
       body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 16/9,
+            childAspectRatio: 16/16,
           ),
           scrollDirection: Axis.vertical,
 

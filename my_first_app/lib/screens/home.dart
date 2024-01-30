@@ -5,7 +5,6 @@ import 'package:my_first_app/add_user/user.dart';
 import 'package:my_first_app/operations/on_press_opreration.dart';
 import 'package:my_first_app/screens/row.dart';
 
-
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -81,7 +80,7 @@ class _MyWidgetState extends State<Home> {
       body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 16/16,
+            childAspectRatio: 16 / 17,
           ),
           scrollDirection: Axis.vertical,
 

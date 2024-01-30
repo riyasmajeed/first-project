@@ -4,7 +4,6 @@ import 'package:my_first_app/Text_widget/text.dart';
 import 'package:my_first_app/add_user/user.dart';
 import 'package:my_first_app/operations/on_press_opreration.dart';
 
-
 class PageUp extends StatefulWidget {
   final User user;
   const PageUp({super.key, required this.user});

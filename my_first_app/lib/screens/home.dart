@@ -112,7 +112,7 @@ class _MyWidgetState extends State<Home> {
                             _userList[index].imageurl ?? '',
                             fit: BoxFit.cover,
                             //  "https://w7.pngwing.com/pngs/113/86/png-transparent-green-sneakers-skate-shoe-nike-nike-sports-shoes-blue-sport-logo.png",
-                            // height: 149,
+                             height: 149,
                           ),
                         ),
                       ),

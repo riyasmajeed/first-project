@@ -98,10 +98,11 @@ class _PageUpState extends State<PageUp> {
                   children: [
                     const Padding(
                         padding: EdgeInsets.only(
-                      right: 10,
-                      left: 10,
+                      right: 17,
+                      left: 5,
                     )),
                     Container(
+                     
                         width: 179,
                         height: 52,
                         decoration: BoxDecoration(
@@ -115,7 +116,7 @@ class _PageUpState extends State<PageUp> {
                       width: 7,
                     ),
                     Container(
-                        width: 180,
+                        width: 179,
                         height: 52,
                         decoration: BoxDecoration(
                             border: Border.all(

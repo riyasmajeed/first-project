@@ -12,7 +12,8 @@ import 'package:path_provider/path_provider.dart';
 class DatabaseConnection {
   Future<Database> setDatabase() async {
     var directory = await getApplicationDocumentsDirectory();
-    var path = join(directory.path,'database');
+    var path = join(directory.path,'app');
+    
     var database =await openDatabase(path,version: 1, onCreate:_createDatabase);
     
     return database;

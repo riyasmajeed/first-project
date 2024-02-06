@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/Service/userService.dart';
-import 'package:my_first_app/Text_widget/text.dart';
-import 'package:my_first_app/add_user/user.dart';
-import 'package:my_first_app/operations/on_press_opreration.dart';
-import 'package:my_first_app/screens/row.dart';
+import 'package:my_first_app/Controls/db_helper/Service/userService.dart';
+import 'package:my_first_app/Controls/get_all_user.dart';
+import 'package:my_first_app/View/Widgets/Icons_widget/icons.dart';
+import 'package:my_first_app/View/Widgets/Text_widget/text.dart';
+import 'package:my_first_app/Models/user.dart';
+import 'package:my_first_app/Controls/db_helper/on_press_opreration.dart';
+import 'package:my_first_app/View/Widgets/row.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,34 +15,24 @@ class Home extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<Home> {
-  late List<User> _userList = <User>[];
-  final _userSevice = UserService();
-
-  getAllUserDetails() async {
-    var users = await _userSevice.readAlluser();
-    _userList = <User>[];
-    users.forEach((user) {
-      setState(() {
-        var usermodel = User();
-        usermodel.id = user['id'];
-        usermodel.brand = user['brand'];
-        usermodel.price = user['price'];
-        usermodel.description = user['description'];
-        usermodel.imageurl = user['imageurl'];
-
-        _userList.add(usermodel);
-      });
-    });
-  }
-
+   late List<User> _userList = <User>[];
+ 
   @override
-  void initState() {
-    getAllUserDetails();
-    super.initState();
-  }
+void initState() {
+  super.initState();
+  _loadUserDetails();
+}
+
+  Future<void> _loadUserDetails() async {
+  List<User> userList = await getAllUserDetails();
+  setState(() {
+    _userList = userList;
+  });
+}
 
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
@@ -54,7 +46,7 @@ class _MyWidgetState extends State<Home> {
               flex: 1,
               child: IconButton(
                 icon:
-                    const Icon(Icons.arrow_back, color: Colors.black, size: 25),
+                    arrow(),
                 onPressed: () {
                   RedirectToMenupage(context);
                 },
@@ -63,22 +55,18 @@ class _MyWidgetState extends State<Home> {
             Flexible(
               flex: 1,
               child: IconButton(
-                icon: const Icon(Icons.search, color: Colors.black, size: 25),
+                icon: Search_icon(),
                 onPressed: () {},
               ),
             ),
           ],
         ),
-        actions: [
-          Icon(
-            Icons.checkroom_sharp,
-            size: 30,
-            color: Colors.black,
-          )
+        actions: const [
+          icon2
         ],
       ),
       body: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 16 / 17,
           ),
@@ -87,12 +75,12 @@ class _MyWidgetState extends State<Home> {
           //  width: MediaQuery.of(context).size.width,
           // height: MediaQuery.of(context).size.height,
 
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: 25,
           ),
           itemCount: _userList.length,
           itemBuilder: (context, index) {
-            return Container(
+            return SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: Padding(
@@ -120,7 +108,7 @@ class _MyWidgetState extends State<Home> {
                         child: Center(
                           child: Text(
                             _userList[index].brand ?? '',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w800,
                                 letterSpacing: 1),
@@ -148,4 +136,8 @@ class _MyWidgetState extends State<Home> {
           }),
     ));
   }
+
+  
+
+  
 }

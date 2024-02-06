@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/Text_widget/text.dart';
-import 'package:my_first_app/add_user/add_data.dart';
-import 'package:my_first_app/screens/home.dart';
-import 'package:my_first_app/screens/row.dart';
-import 'package:my_first_app/operations/on_press_opreration.dart';
+import 'package:my_first_app/View/Widgets/Icons_widget/icons.dart';
+import 'package:my_first_app/View/Widgets/Text_widget/text.dart';
+import 'package:my_first_app/View/add_data.dart';
+import 'package:my_first_app/View/home.dart';
+import 'package:my_first_app/View/Widgets/row.dart';
+import 'package:my_first_app/Controls/db_helper/on_press_opreration.dart';
 
 class First extends StatefulWidget {
   const First({super.key});
@@ -38,19 +39,16 @@ class _MyAppState extends State<First> {
                 Flexible(
                   flex: 1,
                   child: IconButton(
-                    icon:
-                        const Icon(Icons.search, color: Colors.black, size: 25),
+                   
+                      icon: Search_icon(),
                     onPressed: () {},
                   ),
                 ),
               ],
             ),
-            actions: [
-              Icon(
-                Icons.checkroom_sharp,
-                size: 30,
-                color: Colors.black,
-              )
+            actions: const [
+              icon2,
+              
             ],
           ),
           body: Center(

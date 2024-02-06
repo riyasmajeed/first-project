@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:my_first_app/add_user/user.dart';
-import 'package:my_first_app/db_helper/repository.dart';
+import 'package:my_first_app/Models/user.dart';
+import 'package:my_first_app/Controls/db_helper/repository.dart';
 
 class UserService{
   late Repository _repository;

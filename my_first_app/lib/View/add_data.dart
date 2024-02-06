@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/Service/userService.dart';
-import 'package:my_first_app/add_user/user.dart';
-import 'package:my_first_app/operations/on_press_opreration.dart';
-import 'package:my_first_app/screens/home.dart';
+import 'package:my_first_app/Controls/addclear/cleardata.dart';
+import 'package:my_first_app/Controls/db_helper/Service/userService.dart';
+import 'package:my_first_app/Models/user.dart';
+import 'package:my_first_app/Controls/db_helper/on_press_opreration.dart';
+import 'package:my_first_app/View/Widgets/Icons_widget/icons.dart';
+import 'package:my_first_app/View/Widgets/Text_widget/text.dart';
+import 'package:my_first_app/View/home.dart';
+
 
 class Adduser extends StatefulWidget {
   const Adduser({Key? key}) : super(key: key);
@@ -12,10 +16,10 @@ class Adduser extends StatefulWidget {
 }
 
 class _AdduserState extends State<Adduser> {
-  var _userBRANDController = TextEditingController();
-  var _userPRICEController = TextEditingController();
-  var _userDescriptionController = TextEditingController();
-   var _userimageurlController = TextEditingController();
+   var _userBRANDController = TextEditingController();
+   var _userPRICEController = TextEditingController();
+   var _userDescriptionController = TextEditingController();
+    var _userimageurlController = TextEditingController();
   bool _validateBRAND = false;
   bool _validatePRICE = false;
   bool _validateDescription = false;
@@ -32,15 +36,14 @@ class _AdduserState extends State<Adduser> {
 
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Center(
-          child: Text(
-            'ADD PRODUCT',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w800),
-          ),
+          child: 
+         Addproduct,
         ),
         leading: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,7 +52,7 @@ class _AdduserState extends State<Adduser> {
               flex: 1,
               child: IconButton(
                 icon:
-                    const Icon(Icons.arrow_back, color: Colors.black, size: 25),
+                   arrow(),
                 onPressed: () {
                   RedirectToMenupage(context);
                 },
@@ -58,7 +61,8 @@ class _AdduserState extends State<Adduser> {
             Flexible(
               flex: 1,
               child: IconButton(
-                icon: const Icon(Icons.search, color: Colors.black, size: 25),
+                icon: 
+                Search_icon(),
                 onPressed: () {},
               ),
             ),
@@ -71,13 +75,7 @@ class _AdduserState extends State<Adduser> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Add NEW PRODUCT',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    fontWeight: FontWeight.w500),
-              ),
+              Add_product(),
               SizedBox(
                 height: 20.0,
               ),
@@ -185,11 +183,12 @@ class _AdduserState extends State<Adduser> {
                           foregroundColor: Colors.white,
                           backgroundColor: Colors.red,
                           textStyle: const TextStyle(fontSize: 15)),
-                      onPressed: () {
-                        _userBRANDController.text = '';
-                        _userPRICEController.text = '';
-                        _userDescriptionController.text = '';
-                        _userimageurlController.text='';
+                      onPressed: (){
+                          _userBRANDController.text = '';
+                      _userPRICEController.text = '';
+                      _userDescriptionController.text = '';
+                      _userimageurlController.text='';
+
                       },
                       child: const Text('Clear Details'))
                 ],
@@ -203,7 +202,8 @@ class _AdduserState extends State<Adduser> {
                     height: 52,
                     decoration: BoxDecoration(
                         border: Border.all(
-                            width: 2, color: Color.fromARGB(255, 0, 0, 0))),
+                            width: 2,
+                             color: Color.fromARGB(255, 0, 0, 0))),
                     child: Container(
                       child: const Center(
                         child: Text("HOME"),
@@ -216,4 +216,8 @@ class _AdduserState extends State<Adduser> {
       ),
     ));
   }
+
+ 
+
+  
 }

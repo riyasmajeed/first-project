@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/Service/userService.dart';
-import 'package:my_first_app/Text_widget/text.dart';
-import 'package:my_first_app/add_user/user.dart';
-import 'package:my_first_app/operations/on_press_opreration.dart';
+import 'package:my_first_app/Controls/db_helper/Service/userService.dart';
+import 'package:my_first_app/View/Widgets/Icons_widget/icons.dart';
+import 'package:my_first_app/View/Widgets/Text_widget/text.dart';
+import 'package:my_first_app/Models/user.dart';
+import 'package:my_first_app/Controls/db_helper/on_press_opreration.dart';
 
 class PageUp extends StatefulWidget {
   final User user;
@@ -15,6 +16,11 @@ class PageUp extends StatefulWidget {
 class _PageUpState extends State<PageUp> {
   @override
   Widget build(BuildContext context) {
+  
+   
+  
+   
+    
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -28,8 +34,7 @@ class _PageUpState extends State<PageUp> {
               Flexible(
                 flex: 1,
                 child: IconButton(
-                  icon: const Icon(Icons.arrow_back,
-                      color: Colors.black, size: 25),
+                  icon:arrow(),
                   onPressed: () {
                     RedirectToMenupage(context);
                   },
@@ -38,18 +43,15 @@ class _PageUpState extends State<PageUp> {
               Flexible(
                 flex: 1,
                 child: IconButton(
-                  icon: const Icon(Icons.search, color: Colors.black, size: 25),
+                  icon: Search_icon(),
                   onPressed: () {},
                 ),
               ),
             ],
           ),
-          actions: [
-            Icon(
-              Icons.checkroom_sharp,
-              size: 30,
-              color: Colors.black,
-            )
+          actions: const [
+icon2,
+          
           ],
         ),
         body: Container(
@@ -81,7 +83,8 @@ class _PageUpState extends State<PageUp> {
                     ),
                     Container(
                       child: Center(
-                        child: Text("Original achilles Leather Sneaker"),
+                        child:
+                       subtitle,
                       ),
                     ),
                     Container(
@@ -109,8 +112,8 @@ class _PageUpState extends State<PageUp> {
                             border: Border.all(
                                 width: 2, color: Color.fromARGB(255, 0, 0, 0))),
                         child: Center(
-                          child: Text("COLOR:WHITE",
-                              style: TextStyle(color: Colors.black)),
+                          child:
+                          num1Boxname
                         )),
                     SizedBox(
                       width: 7,
@@ -137,10 +140,7 @@ class _PageUpState extends State<PageUp> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "PRICE :",
-                        style: TextStyle(color: Colors.white),
-                      ),
+                    num2Boxname,
                       Text(
                         widget.user.price ?? '',
                         style: TextStyle(color: Colors.white),
@@ -161,11 +161,7 @@ class _PageUpState extends State<PageUp> {
                 // height: 50,
                 child: Column(
                   children: [
-                    new Text(
-                      "DESCRIPTION",
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w800),
-                    ),
+                    description,
                     Text(
                       widget.user.description ?? '',
                       textAlign: TextAlign.center,
@@ -173,7 +169,7 @@ class _PageUpState extends State<PageUp> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Container(
@@ -188,11 +184,8 @@ class _PageUpState extends State<PageUp> {
                                   color: Color.fromARGB(255, 137, 136, 136),
                                   width: 1))),
                       child: Center(
-                        child: Text(
-                          "SIZE & FIT",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w800, color: Colors.black),
-                        ),
+                        child: 
+                        Size,
                       ),
                     ),
                     Container(
@@ -204,11 +197,8 @@ class _PageUpState extends State<PageUp> {
                                   color: Color.fromARGB(255, 137, 136, 136),
                                   width: 1))),
                       child: Center(
-                        child: Text(
-                          "DETAILS & CARE",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w800, color: Colors.black),
-                        ),
+                        child:
+                         Details(),
                       ),
                     )
                   ],
@@ -220,4 +210,6 @@ class _PageUpState extends State<PageUp> {
       ),
     );
   }
+
+  
 }

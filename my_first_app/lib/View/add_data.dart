@@ -178,19 +178,7 @@ class _AdduserState extends State<Adduser> {
                   const SizedBox(
                     width: 10.0,
                   ),
-                  TextButton(
-                      style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
-                          textStyle: const TextStyle(fontSize: 15)),
-                      onPressed: (){
-                          _userBRANDController.text = '';
-                      _userPRICEController.text = '';
-                      _userDescriptionController.text = '';
-                      _userimageurlController.text='';
-
-                      },
-                      child: const Text('Clear Details'))
+                  clearbutton()
                 ],
               ),
               TextButton(

@@ -20,7 +20,8 @@ import 'package:my_first_app/Models/user.dart';
 
          _userList.add(usermodel);
       // });
-    });
+    }
+    );
     return _userList;
   }
   
